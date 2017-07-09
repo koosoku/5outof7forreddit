@@ -6,8 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import kyle.a57.a57forreddit.PostsFragment.OnListFragmentInteractionListener;
-import kyle.a57.a57forreddit.datastructures.PostContent.PostItem;
+import kyle.a57.a57forreddit.CommentsFragment.OnListFragmentInteractionListener;
+import kyle.a57.a57forreddit.datastructures.CommentContent;
+import kyle.a57.a57forreddit.datastructures.CommentContent.CommentItem;
 import kyle.a57.a57forreddit.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -17,12 +18,12 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class CommentItemRecyclerViewAdapter extends RecyclerView.Adapter<CommentItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PostItem> mValues;
+    private final List<CommentItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyItemRecyclerViewAdapter(List<PostItem> items, OnListFragmentInteractionListener listener) {
+    public CommentItemRecyclerViewAdapter(List<CommentItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -30,7 +31,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.post_item, parent, false);
+                .inflate(R.layout.fragment_commentitem, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,7 +39,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).title);
+        holder.mContentView.setText(mValues.get(position).comment);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,13 +62,13 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public PostItem mItem;
+        public CommentItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.list_item);
-            mContentView = (TextView) view.findViewById(R.id.content_item);
+            mIdView = (TextView) view.findViewById(R.id.id);
+            mContentView = (TextView) view.findViewById(R.id.content);
         }
 
         @Override

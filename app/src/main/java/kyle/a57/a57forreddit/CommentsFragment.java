@@ -10,8 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import kyle.a57.a57forreddit.datastructures.PostContent;
-import kyle.a57.a57forreddit.datastructures.PostContent.PostItem;
+import kyle.a57.a57forreddit.datastructures.CommentContent;
+import kyle.a57.a57forreddit.dummy.DummyContent;
+import kyle.a57.a57forreddit.dummy.DummyContent.DummyItem;
 
 /**
  * A fragment representing a list of Items.
@@ -19,7 +20,7 @@ import kyle.a57.a57forreddit.datastructures.PostContent.PostItem;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class PostsFragment extends Fragment {
+public class CommentsFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -31,13 +32,13 @@ public class PostsFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public PostsFragment() {
+    public CommentsFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static PostsFragment newInstance(int columnCount) {
-        PostsFragment fragment = new PostsFragment();
+    public static CommentsFragment newInstance(int columnCount) {
+        CommentsFragment fragment = new CommentsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -56,7 +57,7 @@ public class PostsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_posts, container, false);
+        View view = inflater.inflate(R.layout.fragment_commentitem_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -67,7 +68,7 @@ public class PostsFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new PostItemRecyclerViewAdapter(PostContent.ITEMS, mListener));
+            recyclerView.setAdapter(new CommentItemRecyclerViewAdapter(CommentContent.ITEMS, mListener));
         }
         return view;
     }
@@ -102,6 +103,6 @@ public class PostsFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(PostItem item);
+        void onListFragmentInteraction(CommentContent.CommentItem item);
     }
 }
