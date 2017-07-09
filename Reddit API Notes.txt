@@ -1,0 +1,19 @@
+Voting 
+POST /api/vote
+http://www.reddit.com/api/vote.json?dir=1
+				&id=t1_dj5ih97
+				&uh=rmrm4zbxuxe240a91948adab09eb3efca931d4a38b7cb65679
+
+Search for subreddit
+POST /api/search_subreddits
+http://www.reddit.com/api/search_subreddits.json?query=nba
+
+
+Examples:
+Get Posts
+GET
+http://www.reddit.com/r/nba/hot.json
+
+Get Comments
+GET [/r/subreddit]/comments/article
+http://www.reddit.com/r/nba/comments/6iec2j.json
