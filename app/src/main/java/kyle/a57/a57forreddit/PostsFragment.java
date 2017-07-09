@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import kyle.a57.a57forreddit.datastructures.PostContent;
+import kyle.a57.a57forreddit.datastructures.PostContent.PostItem;
 import kyle.a57.a57forreddit.dummy.DummyContent;
 import kyle.a57.a57forreddit.dummy.DummyContent.DummyItem;
 
@@ -69,7 +71,7 @@ public class PostsFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(PostContent.ITEMS, mListener));
         }
         return view;
     }
@@ -104,6 +106,6 @@ public class PostsFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(PostItem item);
     }
 }

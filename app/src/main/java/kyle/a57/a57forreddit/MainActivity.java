@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
+import kyle.a57.a57forreddit.datastructures.PostContent;
 import kyle.a57.a57forreddit.dummy.DummyContent;
 
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements PostsFragment.OnL
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(PostContent.PostItem item) {
 
     }
 }
